@@ -32,6 +32,7 @@ export interface LogEntry {
   speakerId: string; // "GAME_MASTER" or player ID
   content: string;
   type: 'chat' | 'system' | 'action' | 'death';
+  visibleTo?: string[]; // IDs of players who can see this. If undefined/empty, public.
 }
 
 export interface GameState {

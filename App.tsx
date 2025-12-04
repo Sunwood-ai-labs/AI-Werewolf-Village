@@ -28,10 +28,10 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-indigo-500/30 overflow-hidden">
       
       {/* Header */}
-      <header className="bg-slate-900 border-b border-slate-800 p-4 shadow-xl z-20">
+      <header className="bg-slate-900 border-b border-slate-800 p-4 shadow-xl z-20 shrink-0">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
              <span className="text-3xl animate-pulse">🌕</span>
@@ -68,13 +68,13 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-80px)]">
         
         {/* Left: Game Board */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
+        <div className="lg:col-span-2 flex flex-col gap-6 overflow-y-auto">
            
            {/* Controls */}
-           <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-wrap gap-4 items-center justify-between backdrop-blur-md">
+           <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-wrap gap-4 items-center justify-between backdrop-blur-md shrink-0">
               <div className="flex gap-2">
                  {phase === GamePhase.SETUP ? (
                     <button onClick={initGame} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg font-bold shadow-lg shadow-indigo-900/20 transition-all active:scale-95">
@@ -131,7 +131,7 @@ const App: React.FC = () => {
            </div>
 
            {/* Visualization Area */}
-           <div className="flex-1 bg-slate-900/30 rounded-2xl border border-slate-800 p-8 flex items-center justify-center relative min-h-[400px]">
+           <div className="bg-slate-900/30 rounded-2xl border border-slate-800 p-8 flex items-center justify-center relative min-h-[400px] shrink-0">
               
               {players.length === 0 ? (
                   <div className="text-center space-y-4">
@@ -175,8 +175,8 @@ const App: React.FC = () => {
            </div>
         </div>
 
-        {/* Right: Logs */}
-        <div className="h-[500px] lg:h-auto lg:col-span-1 flex flex-col">
+        {/* Right: Logs - Fixed height to prevent page growth */}
+        <div className="lg:col-span-1 h-[500px] lg:h-full lg:max-h-[calc(100vh-100px)] flex flex-col sticky top-0">
            <GameLog logs={logs} players={players} activeSpeakerId={activeSpeakerId} />
         </div>
       </main>

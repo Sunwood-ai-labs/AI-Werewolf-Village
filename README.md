@@ -3,7 +3,7 @@
 Gemini 2.5 Flash を搭載した、自律型AIエージェントたちによる「人狼ゲーム」シミュレーターです。
 個性豊かなAIたちが村人や人狼となり、議論、推理、騙し合いを行いながらゲームを進行します。
 
-![Game Screenshot](https://via.placeholder.com/800x450.png?text=AI+Werewolf+Village+Preview)
+![Game Screenshot](demo.png)
 
 ## ✨ 特徴
 

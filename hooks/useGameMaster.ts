@@ -23,10 +23,18 @@ export const useGameMaster = () => {
 
   // --- GM Helpers ---
   
-  const addLog = (content: string, type: LogEntry['type'] = 'system', speakerId: string = GM_ID) => {
+  const addLog = (content: string, type: LogEntry['type'] = 'system', speakerId: string = GM_ID, visibleTo?: string[]) => {
     setState(prev => ({
       ...prev,
-      logs: [...prev.logs, { id: uuidv4(), phase: prev.phase, day: prev.dayCount, content, type, speakerId }]
+      logs: [...prev.logs, { 
+          id: uuidv4(), 
+          phase: prev.phase, 
+          day: prev.dayCount, 
+          content, 
+          type, 
+          speakerId, 
+          visibleTo 
+      }]
     }));
   };
 
@@ -247,11 +255,12 @@ export const useGameMaster = () => {
       
       updatePlayers(curr => curr.map(p => p.id === actor.id ? { ...p, voteTargetId: action.targetId } : p));
       
+      // Make Seer result PRIVATE
       if (actor.role === Role.SEER) {
         const target = players.find(p => p.id === action.targetId);
         const isWolf = target?.role === Role.WEREWOLF;
-        // Seer gets private info
-        addLog(`(占い) ${target?.name} は ${isWolf ? '【黒(人狼)】' : '【白(人間)】'} でした。`, 'action', actor.id);
+        // Seer gets private info. Visible only to Seer (actor.id).
+        addLog(`(占い結果) ${target?.name} は ${isWolf ? '【黒(人狼)】' : '【白(人間)】'} でした。`, 'action', actor.id, [actor.id]);
       }
       
     } catch (e: any) {
