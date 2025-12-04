@@ -32,9 +32,9 @@ const App: React.FC = () => {
       
       {/* Full Width Header Image */}
       <img 
-        src="https://raw.githubusercontent.com/Sunwood-ai-labs/AI-Werewolf-Village/refs/heads/main/AI-Werewolf-Village_header.png" 
+        src="https://raw.githubusercontent.com/Sunwood-ai-labs/image-box/refs/heads/main/AI-Werewolf-Village_header.png" 
         alt="AI Werewolf Village" 
-        className="w-full h-32 sm:h-48 object-cover border-b-4 border-slate-900 shadow-2xl shrink-0 relative z-30" 
+        className="w-full h-32 sm:h-48 object-cover object-center border-b-4 border-slate-900 shadow-2xl shrink-0 relative z-30" 
       />
 
       {/* Status Bar */}

@@ -1,4 +1,4 @@
-![AI Werewolf Village Header](https://raw.githubusercontent.com/Sunwood-ai-labs/AI-Werewolf-Village/refs/heads/main/AI-Werewolf-Village_header.png)
+![AI Werewolf Village Header](https://raw.githubusercontent.com/Sunwood-ai-labs/image-box/refs/heads/main/AI-Werewolf-Village_header.png)
 
 # 🌕 AI 人狼村 (AI Werewolf Village)
 
