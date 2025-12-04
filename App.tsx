@@ -28,23 +28,28 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-indigo-500/30 overflow-hidden">
+    <div className="h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-indigo-500/30 overflow-hidden">
       
-      {/* Header */}
-      <header className="bg-slate-900 border-b border-slate-800 p-4 shadow-xl z-20 shrink-0">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-3">
-             <span className="text-3xl animate-pulse">🌕</span>
-             <div>
-               <h1 className="text-2xl font-bold font-horror tracking-wider text-indigo-400">AI 人狼村</h1>
-               <p className="text-xs text-slate-500">Gemini搭載 マルチエージェント・シミュレーター</p>
-             </div>
+      {/* Full Width Header Image */}
+      <img 
+        src="header-ai.png" 
+        alt="AI Werewolf Village" 
+        className="w-full h-32 sm:h-48 object-cover border-b-4 border-slate-900 shadow-2xl shrink-0 relative z-30" 
+      />
+
+      {/* Status Bar */}
+      <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 shadow-xl z-20 shrink-0">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+          
+          <div className="flex items-center gap-2 opacity-80">
+             <span className="text-xl">🌕</span>
+             <h1 className="font-horror text-indigo-400 tracking-wider font-bold">AI 人狼村</h1>
           </div>
 
           <div className="flex items-center gap-4 text-sm">
              <div className="flex flex-col items-end">
-                <span className="font-bold text-amber-500 uppercase tracking-widest text-xs">フェーズ</span>
-                <span className="text-lg">
+                <span className="font-bold text-amber-500 uppercase tracking-widest text-[10px]">フェーズ</span>
+                <span className="text-base font-bold">
                     {phase === GamePhase.DAY_DISCUSSION && "昼：議論"}
                     {phase === GamePhase.DAY_VOTE && "夕方：投票"}
                     {phase === GamePhase.NIGHT_ACTION && "夜：行動"}
@@ -54,24 +59,24 @@ const App: React.FC = () => {
              </div>
              {phase === GamePhase.DAY_DISCUSSION && (
                  <div className="flex flex-col items-end animate-in fade-in">
-                    <span className="font-bold text-slate-500 uppercase tracking-widest text-xs">ラウンド</span>
-                    <span className="text-lg font-mono text-indigo-300">{currentDiscussionRound} / {maxDiscussionRounds}</span>
+                    <span className="font-bold text-slate-500 uppercase tracking-widest text-[10px]">ラウンド</span>
+                    <span className="text-base font-mono text-indigo-300">{currentDiscussionRound} / {maxDiscussionRounds}</span>
                  </div>
              )}
              <div className="h-8 w-px bg-slate-700 mx-2"></div>
              <div className="flex flex-col items-end">
-                <span className="font-bold text-slate-500 uppercase tracking-widest text-xs">日数</span>
-                <span className="text-lg font-mono">{dayCount}日目</span>
+                <span className="font-bold text-slate-500 uppercase tracking-widest text-[10px]">日数</span>
+                <span className="text-base font-mono">{dayCount}日目</span>
              </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-80px)]">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-hidden">
         
         {/* Left: Game Board */}
-        <div className="lg:col-span-2 flex flex-col gap-6 overflow-y-auto">
+        <div className="lg:col-span-2 flex flex-col gap-6 overflow-y-auto pr-2">
            
            {/* Controls */}
            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-wrap gap-4 items-center justify-between backdrop-blur-md shrink-0">
@@ -175,8 +180,8 @@ const App: React.FC = () => {
            </div>
         </div>
 
-        {/* Right: Logs - Fixed height to prevent page growth */}
-        <div className="lg:col-span-1 h-[500px] lg:h-full lg:max-h-[calc(100vh-100px)] flex flex-col sticky top-0">
+        {/* Right: Logs - Flex column to fill remaining height */}
+        <div className="lg:col-span-1 flex flex-col h-full overflow-hidden">
            <GameLog logs={logs} players={players} activeSpeakerId={activeSpeakerId} />
         </div>
       </main>
