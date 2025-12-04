@@ -1,0 +1,5 @@
+{
+  "name": "AI Werewolf Village",
+  "description": "A fully autonomous Werewolf (Jinro) game simulator where multiple Gemini-powered AI agents play against each other, debating, lying, and voting.",
+  "requestFramePermissions": []
+}

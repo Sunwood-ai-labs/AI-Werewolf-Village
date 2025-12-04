@@ -1,11 +1,50 @@
-<div align="center">
+# 🌕 AI 人狼村 (AI Werewolf Village)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Gemini 2.5 Flash を搭載した、自律型AIエージェントたちによる「人狼ゲーム」シミュレーターです。
+個性豊かなAIたちが村人や人狼となり、議論、推理、騙し合いを行いながらゲームを進行します。
 
-  <h1>Built with AI Studio</h2>
+![Game Screenshot](https://via.placeholder.com/800x450.png?text=AI+Werewolf+Village+Preview)
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## ✨ 特徴
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+*   **マルチエージェント・シミュレーション**: すべてのプレイヤーがLLMによって制御され、独自の性格（論理的、感情的、疑り深いなど）と記憶を持って行動します。
+*   **Gemini 2.5 Flash 高速駆動**: Googleの最新モデルを使用し、リアルタイムに近い速度でサクサクと議論が進みます。
+*   **OpenRouter 対応**: 設定により、Claude 3.5 Sonnet や GPT-4o などの他社モデルに切り替えて挙動の違いを楽しむことも可能です。
+*   **完全自動 GM**: ゲームマスター(GM)機能がフェーズ管理（昼・投票・夜）、投票集計、勝敗判定を厳密に行います。
+*   **XML構造化出力**: AIの出力制御にXMLテンプレートを使用し、誤作動の少ない安定したゲーム進行を実現しています。
+*   **神の視点モード**: 観戦者として、全員の役職を透視しながらシミュレーションを楽しめます。
 
-</div>
+## 🚀 遊び方
+
+1.  **APIキーの準備**:
+    *   このアプリは `process.env.API_KEY` (Gemini) または `process.env.OPENROUTER_API_KEY` を使用します。
+2.  **ゲーム開始**:
+    *   画面左上の「ゲーム開始」ボタンをクリックします。役職がランダムに割り振られます。
+3.  **進行**:
+    *   **手動送り**: 「次へ進む」ボタンで、発言や行動を1つずつ確認できます。
+    *   **自動再生**: 「自動再生」をONにすると、設定した速度で勝手にゲームが進みます。
+4.  **設定調整**:
+    *   **議論の長さ**: 1日の議論で何周発言するか（デフォルト3周）をスライダーで変更できます。
+    *   **速度**: 自動再生のスピードを調整できます。
+    *   **モデル変更**: 画面右上のプルダウンから使用するAIモデルを変更できます。
+
+## 🧩 役職構成
+
+現在は **5人村** モードがデフォルトです。
+
+| アイコン | 役職 | 人数 | 陣営 | 能力 |
+| :---: | :--- | :---: | :--- | :--- |
+| 🐺 | **人狼** | 1 | 人狼 | 夜に1人を襲撃して脱落させる。 |
+| 🔮 | **占い師** | 1 | 村人 | 夜に1人を占い、人間か人狼かを知る。 |
+| 🧑‍🌾 | **村人** | 3 | 村人 | 特になし。議論で人狼を探す。 |
+
+## 🛠️ 技術スタック
+
+*   **Frontend**: React 19, TypeScript
+*   **Styling**: Tailwind CSS, Lucide React (Icons)
+*   **AI SDK**: Google GenAI SDK (`@google/genai`)
+*   **Architecture**: Custom Hook Based State Machine (`useGameMaster`)
+
+## 📝 ライセンス
+
+MIT License
